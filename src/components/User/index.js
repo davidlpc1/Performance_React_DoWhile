@@ -1,4 +1,5 @@
 import React,{ useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import users from '../../users_data'
 
@@ -13,7 +14,8 @@ const Container = styled.div`
 
 export default function User({ index, style }){
   const user = users[index]
-  const alertOnClick = useCallback(() => alert(`${user} está apresentando no DoWhile2020`),[ user ])
+  const history = useHistory()
+  const alertOnClick = useCallback(() => history.push(`/${user}`),[ user , history ])
   return(
     <>
       <Container style={style} onClick={alertOnClick}>
